@@ -1,0 +1,7 @@
+melodia_catalog_create_catalog:
+    path: /catalog/add
+    defaults: { _controller: MelodiaCatalogBundle:Catalog:add }
+
+melodia_catalog_create_record:
+    path: /record/add
+    defaults: { _controller: MelodiaCatalogBundle:Record:add }

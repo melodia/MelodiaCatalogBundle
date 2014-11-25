@@ -1,0 +1,7 @@
+engage360_api_catalogs:
+    type:     rest
+    resource: Melodia\CatalogBundle\Controller\Api\CatalogController
+
+engage360_api_records:
+    type:     rest
+    resource: Melodia\CatalogBundle\Controller\Api\RecordController
