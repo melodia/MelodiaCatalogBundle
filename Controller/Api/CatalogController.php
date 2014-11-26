@@ -57,9 +57,12 @@ class CatalogController extends RestController
 
         $catalogs = $this->getDoctrine()->getRepository(Catalog::REPOSITORY)
             ->findSubset($page, $limit);
-        $catalogs = $this->get('jms_serializer')->serialize($catalogs, 'json',
-            SerializationContext::create()->setGroups(array("getAllCatalogs"))
-        );
+
+        $context = new SerializationContext();
+        $context->setGroups(array("getAllCatalogs"));
+        $context->setSerializeNull(true);
+
+        $catalogs = $this->get('jms_serializer')->serialize($catalogs, 'json', $context);
 
         return new Response($catalogs, 200);
     }
@@ -87,9 +90,11 @@ class CatalogController extends RestController
             return new JsonResponse(null, 404);
         }
 
-        $catalog = $this->get('jms_serializer')->serialize($catalog, 'json',
-            SerializationContext::create()->setGroups(array("getOneCatalog", "getOneRecord"))
-        );
+        $context = new SerializationContext();
+        $context->setGroups(array("getOneCatalog", "getOneRecord"));
+        $context->setSerializeNull(true);
+
+        $catalog = $this->get('jms_serializer')->serialize($catalog, 'json', $context);
 
         return new Response($catalog, 200);
     }
@@ -117,9 +122,11 @@ class CatalogController extends RestController
         $entityManager->persist($catalog);
         $entityManager->flush();
 
-        $catalog = $this->get('jms_serializer')->serialize($catalog, 'json',
-            SerializationContext::create()->setGroups(array("getOneCatalog", "getOneRecord"))
-        );
+        $context = new SerializationContext();
+        $context->setGroups(array("getOneCatalog", "getOneRecord"));
+        $context->setSerializeNull(true);
+
+        $catalog = $this->get('jms_serializer')->serialize($catalog, 'json', $context);
 
         return new Response($catalog, 201);
     }
@@ -160,9 +167,11 @@ class CatalogController extends RestController
         $entityManager->persist($catalog);
         $entityManager->flush();
 
-        $catalog = $this->get('jms_serializer')->serialize($catalog, 'json',
-            SerializationContext::create()->setGroups(array("getOneCatalog", "getOneRecord"))
-        );
+        $context = new SerializationContext();
+        $context->setGroups(array("getOneCatalog", "getOneRecord"));
+        $context->setSerializeNull(true);
+
+        $catalog = $this->get('jms_serializer')->serialize($catalog, 'json', $context);
 
         return new Response($catalog, 200);
     }
