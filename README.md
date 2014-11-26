@@ -7,7 +7,7 @@ Step 1: Download the Bundle
 
 ```json
 // composer.json
-repositories: [
+"repositories": [
   {
     "type": "vcs",
     "url": "https://github.com/melodia/MelodiaCatalogBundle.git"
